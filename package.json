@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
     "clean": "rmdir /s \"www/\"",
     "build": "npm run clean && tsc && copy package.json \"www/package.json\" && mkdir \"www/tmp/\" && cd \"www\" && zip -r Archive.zip . && cd ..",
-    "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
+    "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -32,5 +34,9 @@
     "jimp": "^0.16.1",
     "rimraf": "^3.0.2",
     "lodash": "^4.17.15"
+  },
+  "engines" : {
+    "npm" : ">=7.0.0",
+    "node" : ">=14.18.1"
   }
 }
