@@ -41,3 +41,4 @@ venv/
 !.elasticbeanstalk/*.global.yml
 
 .npmrc
+.env
