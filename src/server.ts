@@ -27,7 +27,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // RETURNS
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
-  app.get( "/filteredimage/:image_url", async ( req, res ) => {
+  app.get( "/filteredimage", async ( req, res ) => {
     let { image_url } = req.query;
     if (!image_url) {
       return res.status(400).send("Veuillez fournir une image valide.");
@@ -40,11 +40,12 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
             }
             deleteLocalFiles([filteredpath]);
           });
-        }).catch(() => {
-      return res.status(400)
-          .send("Une erreur se produit lors du traitement de l'image.");
+        }).catch((error) => {
+      return res.status(422).send(`Oups ${error}`);
     });
   });
+
+
   /**************************************************************************** */
 
   //! END @TODO1
